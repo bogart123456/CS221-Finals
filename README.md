@@ -1,2 +1,2 @@
-# CS221-Finals
-Online Retail Store Management System - Finals
+# e-commerce
+Software Engineering 2 Finals - E-Commerce
