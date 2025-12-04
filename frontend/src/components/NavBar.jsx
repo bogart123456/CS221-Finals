@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"; // 1. Import useContext
+import React, { useState, useContext } from "react"; // Import useContext
 import {
   Home,
   ShoppingBag,
@@ -12,18 +12,16 @@ import {
   Shield,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "./AuthContext.jsx"; // 2. Import the context
+import { AuthContext } from "./AuthContext.jsx"; // Import the context
 
 const navLinks = [
   { name: "Home", icon: Home, path: "/" },
   { name: "Products", icon: ShoppingBag, path: "/products" },
   { name: "Contact", icon: Mail, path: "/contact" },
-  { name: "About", icon: Info, path: "/about" },
 ];
 
-// 3. Remove props: isLoggedIn, user, onLogout
 const NavBar = () => {
-  // 4. Get auth state directly from context
+  // Get auth state directly from context
   const { isLoggedIn, user, handleLogout } = useContext(AuthContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -48,16 +46,16 @@ const NavBar = () => {
     "flex items-center text-sm font-medium p-2 rounded-lg text-yellow-700 bg-yellow-200 hover:bg-yellow-300";
 
   const loginButtonClass =
-    "flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition-colors duration-150 cursor-pointer";
+    "flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-150 cursor-pointer";
   const logoutButtonClass =
-    "flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-lg hover:bg-red-500 transition-colors duration-150 cursor-pointer";
+    "flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-150 cursor-pointer";
   const loginIconClass = "w-4 h-4 mr-2 transform rotate-180";
   const logoutIconClass = "w-4 h-4 mr-2";
 
   return (
     <header className={navBarClass}>
       {/* Left Side: Brand Logo and Mobile Menu Button */}
-      <div className="flex items-center">
+      <div className="flex items-center flex-1">
         <Link to="/" className={brandClass}>
           Ackerman's
         </Link>
@@ -88,7 +86,7 @@ const NavBar = () => {
       </nav>
 
       {/* Right Side: Conditional Login/Logout Button */}
-      <div className="ml-auto flex-shrink-0 flex items-center space-x-4">
+      <div className="flex items-center space-x-4 flex-1 justify-end">
         {isLoggedIn && user ? (
           // --- LOGGED IN STATE ---
           <>

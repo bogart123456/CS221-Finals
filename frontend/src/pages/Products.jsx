@@ -127,7 +127,7 @@ const ProductPage = () => {
     return uniqueCategories.filter((c) => c && c.trim() !== "").sort();
   };
 
-  // 1. Fetch Products
+  // Fetch Products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);

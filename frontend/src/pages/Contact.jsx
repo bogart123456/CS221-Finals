@@ -178,7 +178,7 @@ const Contact = () => {
               <button
                 type="submit"
                 className="px-10 py-4 text-sm font-bold text-white uppercase tracking-widest hover:opacity-90 transition-opacity shadow-lg"
-                style={{ backgroundColor: "var(--color-primary-dark)" }}
+                style={{ backgroundColor: "var(--color-primary-accent)" }}
               >
                 Submit
               </button>
@@ -215,36 +215,35 @@ const Contact = () => {
                 <h4 className="font-bold text-gray-900 mb-1">
                   Corporate Headquarters
                 </h4>
-                <p className="text-sm">25th Floor, Philam Life Tower</p>
-                <p className="text-sm">Paseo de Roxas, Makati City, 1226</p>
-                <p className="text-sm">Metro Manila, Philippines</p>
+                <p className="text-sm">16th Floor, Summit Crest Tower</p>
+                <p className="text-sm">J.P. Rizal Avenue, Barangay Poblacion</p>
+                <p className="text-sm">
+                  Quezon City, Metro Manila, 1100 Philippines
+                </p>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-900 mb-1">
                   Manufacturing Plant
                 </h4>
-                <p className="text-sm">Block 3, Lot 8, Phase 1</p>
-                <p className="text-sm">Laguna Technopark, Biñan</p>
-                <p className="text-sm">Laguna, 4024 Philippines</p>
+                <p className="text-sm">Lot 12, Block 5, Phase 3</p>
+                <p className="text-sm">
+                  NorthTech Industrial Park, Barangay Tagbac
+                </p>
+                <p className="text-sm">
+                  Ilagan City, Isabela, 3300 Philippines
+                </p>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-900 mb-1">
                   Visayas Distribution Center
                 </h4>
-                <p className="text-sm">Mandaue North Central</p>
-                <p className="text-sm">Mandaue City, Cebu</p>
-                <p className="text-sm">6014 Philippines</p>
+                <p className="text-sm">Northgate Logistics Complex</p>
+                <p className="text-sm">MacArthur Highway, Barangay Dau</p>
+                <p className="text-sm">Mabalacat City, Pampanga</p>
+                <p className="text-sm">2010 Philippines</p>
               </div>
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="pt-8 flex space-x-6 justify-center">
-              <SocialLink href="#" icon={<Facebook className="w-6 h-6" />} />
-              <SocialLink href="#" icon={<Instagram className="w-6 h-6" />} />
-              <SocialLink href="#" icon={<Youtube className="w-6 h-6" />} />
-              <SocialLink href="#" icon={<Home className="w-6 h-6" />} />
             </div>
           </div>
         </div>
@@ -252,15 +251,5 @@ const Contact = () => {
     </div>
   );
 };
-
-// Helper component for social icons
-const SocialLink = ({ href, icon }) => (
-  <a
-    href={href}
-    className="p-3 rounded-full border border-gray-300 hover:bg-gray-100 hover:scale-110 transition-all duration-300 text-gray-700"
-  >
-    {icon}
-  </a>
-);
 
 export default Contact;
