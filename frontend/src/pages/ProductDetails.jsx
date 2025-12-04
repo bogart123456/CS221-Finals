@@ -133,7 +133,7 @@ const ProductDetails = () => {
     return (
       <div
         className="fixed inset-0 flex justify-center items-center z-50 bg-opacity-90"
-        style={{ backgroundColor: "var(--color-primary-dark)" }}
+        style={{ backgroundColor: "var(--color-light-accent)" }}
       >
         <div className="flex items-center p-6 bg-white rounded-xl shadow-2xl animate-pulse">
           <Loader
@@ -341,14 +341,14 @@ const ProductDetails = () => {
                                         : "opacity-50 cursor-not-allowed grayscale"
                                     }
                                 `}
-                style={{ backgroundColor: "var(--color-primary-dark)" }}
+                style={{ backgroundColor: "var(--color-primary-accent)" }}
               >
                 <span className="flex items-center justify-center">
                   <ShoppingCart
                     className={`w-6 h-6 mr-3 ${
                       product.stock > 0 ? "animate-bounce-slow" : ""
                     }`}
-                    style={{ color: "var(--color-primary-accent)" }}
+                    style={{ color: "var(--color-light-accent)" }}
                   />
                   {product.stock > 0 ? "Order Now" : "Unavailable"}
                 </span>

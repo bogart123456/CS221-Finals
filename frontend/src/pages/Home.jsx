@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle, Loader } from "lucide-react";
-import HeroImage from "../assets/heroSection.jpg"; // ✔ Correct asset import
+import Background from "../assets/Background.jpg";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -60,12 +60,12 @@ const Home = () => {
 
   return (
     <div className="font-sans text-gray-800">
-      {/* --- HERO SECTION (Uses LOCAL asset image) --- */}
+      {/* --- BACKGROUND SECTION (Uses LOCAL asset image) --- */}
       <section
         className="relative py-32 px-6 md:px-12 text-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HeroImage})` }} // ✔ Uses asset correctly
+        style={{ backgroundImage: `url("${Background}")` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        {<div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>}
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
@@ -141,7 +141,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- MANUFACTURING PROCESS --- */}
+      {/* --- BRAND IDENTITY --- */}
       <section
         className="py-20 px-6 md:px-12"
         style={{ backgroundColor: "var(--color-light-accent)" }}
@@ -154,7 +154,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="h-96 bg-gray-300 rounded-lg overflow-hidden shadow-lg">
               <img
-                src="https://www.tailorbrands.com/wp-content/uploads/2022/08/Levis-logo7.jpg"
+                src="https://i.pinimg.com/1200x/41/02/b1/4102b1f28a547984a7f5789fc69bf485.jpg"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -178,14 +178,6 @@ const Home = () => {
                   </li>
                 ))}
               </ul>
-
-              <Link
-                to="/about"
-                className="px-6 py-3 font-semibold text-white rounded-lg"
-                style={{ backgroundColor: "var(--color-primary-accent)" }}
-              >
-                Learn More
-              </Link>
             </div>
           </div>
         </div>

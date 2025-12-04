@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Mail, Lock, LogIn, Loader2, AlertCircle } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom'; 
-import { AuthContext } from '../components/AuthContext.jsx'; 
+import React, { useState, useContext, useEffect } from "react";
+import { Mail, Lock, LogIn, Loader2, AlertCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext.jsx";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -13,13 +13,13 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitMessage, setSubmitMessage] = useState("");
 
   // Debug check for API URL
   useEffect(() => {
@@ -38,7 +38,7 @@ const Login = () => {
     if (errors[name]) {
       setErrors({
         ...errors,
-        [name]: '',
+        [name]: "",
       });
     }
   };
@@ -46,19 +46,19 @@ const Login = () => {
   const validate = (data) => {
     let newErrors = {};
     if (!data.email.trim()) {
-      newErrors.email = 'Email is required.';
+      newErrors.email = "Email is required.";
     } else if (!EMAIL_REGEX.test(data.email)) {
-      newErrors.email = 'Invalid email format.';
+      newErrors.email = "Invalid email format.";
     }
     if (!data.password) {
-      newErrors.password = 'Password is required.';
+      newErrors.password = "Password is required.";
     }
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitMessage('');
+    setSubmitMessage("");
     const validationErrors = validate(formData);
     setErrors(validationErrors);
 
@@ -66,35 +66,37 @@ const Login = () => {
       setIsSubmitting(true);
       try {
         const url = `${API_BASE_URL}/auth/login`;
-        
+
         const response = await fetch(url, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
 
-        const data = await response.json(); 
+        const data = await response.json();
 
         if (response.ok) {
-          // 1. Save token
-          localStorage.setItem('token', data.token);
-          
-          // 2. Update global context
+          // Save token
+          localStorage.setItem("token", data.token);
+
+          // Update global context
           if (handleLogin) {
-            handleLogin(data.user); 
+            handleLogin(data.user);
           }
-          
-          // 3. Navigate to home or dashboard
-          navigate('/');
+
+          // Navigate to home or dashboard
+          navigate("/");
         } else {
-          setSubmitMessage(`🚫 ${data.message || 'Invalid email or password.'}`);
-          setFormData({ ...formData, password: '' });
+          setSubmitMessage(
+            `🚫 ${data.message || "Invalid email or password."}`
+          );
+          setFormData({ ...formData, password: "" });
         }
       } catch (error) {
-        console.error('Login Fetch Error:', error);
-        setSubmitMessage('⚠️ Could not connect to the server. Check network.');
+        console.error("Login Fetch Error:", error);
+        setSubmitMessage("⚠️ Could not connect to the server. Check network.");
       } finally {
         setIsSubmitting(false);
       }
@@ -102,19 +104,23 @@ const Login = () => {
   };
 
   // Styling helpers
-  const baseInputClasses = "w-full p-3 pl-10 border border-gray-300 rounded-lg outline-none transition duration-200 focus:ring-2 focus:ring-green-400 focus:border-green-400";
-  const errorInputClasses = "border-red-500 focus:ring-red-400 focus:border-red-500";
+  const baseInputClasses =
+    "w-full p-3 pl-10 border border-gray-300 rounded-lg outline-none transition duration-200 focus:ring-2 focus:ring-green-400 focus:border-green-400";
+  const errorInputClasses =
+    "border-red-500 focus:ring-red-400 focus:border-red-500";
   const labelClasses = "block text-sm font-semibold text-gray-700 mb-1";
   const errorTextClasses = "text-sm text-red-500 mt-1";
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: 'var(--color-light-accent, #f3f4f6)' }}>
+    <div
+      className="min-h-screen flex items-center justify-center p-4"
+      style={{ backgroundColor: "var(--color-light-accent, #f3f4f6)" }}
+    >
       <div className="w-full max-w-lg md:max-w-xl bg-white p-8 md:p-12 shadow-2xl rounded-2xl">
         <h2 className="text-3xl font-normal text-center text-gray-800 mb-8">
           Login
         </h2>
         <form onSubmit={handleSubmit}>
-          
           <div className="mb-6">
             <label htmlFor="email" className={labelClasses}>
               Email
@@ -128,7 +134,9 @@ const Login = () => {
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleChange}
-                className={`${baseInputClasses} ${errors.email ? errorInputClasses : ''}`}
+                className={`${baseInputClasses} ${
+                  errors.email ? errorInputClasses : ""
+                }`}
                 disabled={isSubmitting}
               />
             </div>
@@ -148,24 +156,31 @@ const Login = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`${baseInputClasses} ${errors.password ? errorInputClasses : ''}`}
+                className={`${baseInputClasses} ${
+                  errors.password ? errorInputClasses : ""
+                }`}
                 disabled={isSubmitting}
               />
             </div>
-            {errors.password && <p className={errorTextClasses}>{errors.password}</p>}
+            {errors.password && (
+              <p className={errorTextClasses}>{errors.password}</p>
+            )}
           </div>
 
           <div className="flex justify-end mb-8">
-            <Link to="/forgot-password" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition duration-150">
+            <Link
+              to="/forgot-password"
+              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition duration-150"
+            >
               Forgot Password?
             </Link>
           </div>
 
-          <div className='text-center'>
+          <div className="text-center">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-12 flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full shadow-lg transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed transform hover:scale-[1.01]"
+              className="w-full h-12 flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full shadow-lg transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed transform hover:scale-[1.01]"
             >
               {isSubmitting ? (
                 <>
@@ -180,7 +195,7 @@ const Login = () => {
               )}
             </button>
           </div>
-          
+
           {submitMessage && (
             <div className="mt-4 p-3 bg-red-50 border border-red-100 rounded-lg flex items-center justify-center text-red-600 text-sm font-medium">
               <AlertCircle className="w-4 h-4 mr-2" />
@@ -188,10 +203,13 @@ const Login = () => {
             </div>
           )}
 
-          <div className='text-center mt-6'>
+          <div className="text-center mt-6">
             <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
-              <Link to="/signup" className="font-semibold text-blue-600 hover:text-blue-700 transition duration-150">
+              Don't have an account?{" "}
+              <Link
+                to="/signup"
+                className="font-semibold text-blue-600 hover:text-blue-700 transition duration-150"
+              >
                 Sign Up
               </Link>
             </p>

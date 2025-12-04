@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1a202c] text-white py-12 md:py-16">
+    <footer className="bg-[#000000] text-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Column 1: Branding & Copyright */}
@@ -18,7 +18,7 @@ const Footer = () => {
 
             {/* Copyright Text */}
             <div className="text-gray-400 text-sm font-medium mt-auto">
-              &copy; 2025 Manufacture and Produce. All rights reserved.
+              &copy; 2025 Ackerman's. All rights reserved.
             </div>
           </div>
 
@@ -38,14 +38,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
-                  className="hover:text-white hover:underline transition-all duration-200"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/contact"
                   className="hover:text-white hover:underline transition-all duration-200"
                 >
@@ -61,7 +53,11 @@ const Footer = () => {
               Contact Us
             </h3>
             <div className="space-y-3 text-sm text-gray-300 font-medium mb-6">
-              <p>123 Industrial Way, Textile City, TX 12345</p>
+              <p>
+                Unit 7, Ground Floor, Sunrise Commercial Center Rizal Avenue
+                Extension, Barangay San Isidro Pasig City, Metro Manila 1600
+                Philippines
+              </p>
               <p>
                 Email:{" "}
                 <a
@@ -79,7 +75,7 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Social Icons */}
+            {/*Social Icons}
             <div className="flex space-x-5">
               <a
                 href="#"
@@ -105,7 +101,7 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
